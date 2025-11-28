@@ -1,0 +1,188 @@
+# Urchin ZMK Firmware Configuration
+
+<div align="center">
+
+![ZMK](https://img.shields.io/badge/ZMK-Firmware-blue?style=for-the-badge)
+![Keyboard](https://img.shields.io/badge/Keyboard-Urchin-orange?style=for-the-badge)
+![Keys](https://img.shields.io/badge/Keys-34-green?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+**Configuración personalizada de ZMK para el teclado Urchin (34 teclas)**
+
+*Optimizada para programación con Neovim y escritura en español*
+
+[📥 Descargar](#-instalación) •
+[📖 Documentación](#-características) •
+[🎨 Layout Visual](docs/layout.pdf) •
+[🚀 Guía Rápida](QUICK_REFERENCE.md)
+
+</div>
+
+---
+
+## 🎯 Características
+
+### Layout de 34 teclas
+- 3x5 teclas principales por mano (30 total)
+- 2 teclas de pulgar por mano (4 total)
+
+### Capas
+1. **BASE**: QWERTY español con home row mods
+2. **LOWER**: Números y símbolos de programación
+3. **RAISE**: Navegación y teclas de función
+4. **ADJUST**: Configuración Bluetooth y media
+
+### Home Row Mods
+- **Mano izquierda**: A(Ctrl), S(Alt), D(GUI), F(Shift)
+- **Mano derecha**: J(Shift), K(GUI), L(Alt), ;(Ctrl)
+
+### Combos útiles
+- **J + K**: ESC (perfecto para salir de modo insertar en Vim)
+- **Q + W**: TAB
+- **L + ;**: Ñ
+- **K + L**: ' (comilla simple)
+- **M + ,**: " (comilla doble)
+- **Ambos Shifts**: Caps Word
+
+## 🚀 Instalación
+
+### 1. Fork este repositorio
+
+Haz fork de este repo en tu cuenta de GitHub.
+
+### 2. Habilita GitHub Actions
+
+Ve a la pestaña "Actions" y habilita los workflows.
+
+### 3. Compila el firmware
+
+El firmware se compilará automáticamente con cada push a `main`. Los archivos `.uf2` estarán disponibles en los artifacts de la acción.
+
+### 4. Flashea el teclado
+
+1. Descarga los archivos `.uf2` de los artifacts
+2. Conecta cada mitad del teclado en modo bootloader (doble tap en reset)
+3. Arrastra el archivo correspondiente al almacenamiento USB que aparece:
+   - `urchin_left_nice_view.uf2` → Mitad izquierda
+   - `urchin_right_nice_view.uf2` → Mitad derecha
+
+### 5. Reset de configuración (si es necesario)
+
+Si necesitas resetear la configuración Bluetooth:
+1. Flashea `settings_reset.uf2` en ambas mitades
+2. Vuelve a flashear el firmware normal
+
+## 📝 Estructura del Proyecto
+
+```
+urchin-zmk-config/
+├── .github/
+│   └── workflows/
+│       └── build.yml          # GitHub Actions para compilación automática
+├── config/
+│   ├── urchin.keymap          # Definición del layout y capas
+│   ├── urchin.conf            # Configuración de ZMK
+│   └── west.yml               # Dependencias de ZMK
+├── docs/
+│   └── layout.pdf             # Diagrama visual del layout
+├── build.yaml                 # Configuración de compilación
+└── README.md                  # Este archivo
+```
+
+## 🎨 Layout Visual
+
+Consulta `docs/layout.pdf` para un diagrama visual completo del layout.
+
+### Capa BASE
+```
+╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+│      Q      │      W      │      E      │      R      │      T      │   │      Y      │      U      │      I      │      O      │      P      │
+├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│   A (Ctrl)  │   S (Alt)   │   D (GUI)   │  F (Shift)  │      G      │   │      H      │  J (Shift)  │   K (GUI)   │   L (Alt)   │  ; (Ctrl)   │
+├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│      Z      │      X      │      C      │      V      │      B      │   │      N      │      M      │      ,      │      .      │      /      │
+╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+                                           │  ESC(LOWER) │ BSPC (Ctrl) │   │  SPC(Shift) │  ENT(RAISE) │
+                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
+```
+
+### Capa LOWER (Números y Símbolos)
+```
+╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+│      !      │      @      │      #      │      $      │      %      │   │      ^      │      &      │      *      │      (      │      )      │
+├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│      1      │      2      │      3      │      4      │      5      │   │      6      │      7      │      8      │      9      │      0      │
+├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│      `      │      ~      │      [      │      ]      │      {      │   │      }      │      |      │      \      │      -      │      =      │
+╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+                                           │    ______   │     DEL     │   │    ______   │   ADJUST    │
+                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
+```
+
+### Capa RAISE (Navegación)
+```
+╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+│     F1      │     F2      │     F3      │     F4      │     F5      │   │     F6      │     F7      │     F8      │     F9      │    F10      │
+├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│    Ctrl     │     Alt     │     GUI     │    Shift    │    F11      │   │    LEFT     │    DOWN     │     UP      │    RIGHT    │    F12      │
+├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│  Undo(^Z)   │  Cut(^X)    │  Copy(^C)   │ Paste(^V)   │  Redo(^Y)   │   │    HOME     │   PG_DN     │   PG_UP     │     END     │    INS      │
+╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+                                           │   ADJUST    │    ______   │   │    ______   │    ______   │
+                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
+```
+
+## 🔧 Personalización
+
+Para personalizar el layout:
+
+1. Edita `config/urchin.keymap`
+2. Haz commit y push a tu repositorio
+3. GitHub Actions compilará automáticamente el nuevo firmware
+4. Descarga los archivos `.uf2` de los artifacts y flashea
+
+### Ajustes recomendados
+
+En `config/urchin.conf` puedes ajustar:
+- **Timeout de sleep**: `CONFIG_ZMK_IDLE_SLEEP_TIMEOUT` (en ms)
+- **Debounce**: `CONFIG_ZMK_KSCAN_DEBOUNCE_PRESS_MS` y `CONFIG_ZMK_KSCAN_DEBOUNCE_RELEASE_MS`
+- **Logging USB**: Útil para debugging, pero consume más batería
+
+En `config/urchin.keymap` puedes ajustar:
+- **Tapping term**: `tapping-term-ms` (tiempo para activar hold vs tap)
+- **Quick tap**: `quick-tap-ms` (ventana para double-tap)
+- **Combos timeout**: `timeout-ms` en cada combo
+
+## 💡 Consejos de Uso
+
+### Para Neovim
+- El combo **J+K** para ESC es extremadamente útil para salir del modo insertar
+- La capa RAISE tiene todas las teclas de navegación accesibles sin mover las manos
+- Los atajos de copiar/pegar están en la capa RAISE fila inferior
+
+### Para Español
+- El combo **L+;** genera Ñ rápidamente
+- Los acentos se pueden escribir usando la tecla muerta ` en la capa LOWER
+
+### Home Row Mods
+- Los mods se activan manteniendo presionada la tecla
+- Práctica el timing para evitar activaciones accidentales
+- Ajusta `tapping-term-ms` si necesitas más/menos tiempo
+
+## 🔗 Enlaces Útiles
+
+- [Documentación oficial de ZMK](https://zmk.dev/)
+- [Repositorio oficial de Urchin](https://github.com/duckyb/urchin)
+- [Comunidad de ZMK en Discord](https://zmk.dev/community/discord/invite)
+
+## 📄 Licencia
+
+MIT License - Ver archivo LICENSE para más detalles.
+
+## 🤝 Contribuciones
+
+¡Las contribuciones son bienvenidas! Si tienes mejoras para el layout o encuentras bugs, no dudes en abrir un issue o pull request.
+
+---
+
+**¡Feliz typing! ⌨️✨**
