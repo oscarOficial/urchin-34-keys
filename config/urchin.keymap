@@ -7,12 +7,14 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <behaviors/unicode.dtsi>
 
 // Definición de capas
 #define BASE 0
 #define LOWER 1
 #define RAISE 2
 #define ADJUST 3
+#define SPANISH 4
 
 // Home row mods configuración
 &mt {
@@ -28,72 +30,13 @@
     quick-tap-ms = <175>;
 };
 
-/ {
-    macros {
-        // Macros para vocales acentuadas (usando dead keys de US-intl)
-        a_acute: a_acute {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SQT &kp A>;
-        };
-        e_acute: e_acute {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SQT &kp E>;
-        };
-        i_acute: i_acute {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SQT &kp I>;
-        };
-        o_acute: o_acute {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SQT &kp O>;
-        };
-        u_acute: u_acute {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SQT &kp U>;
-        };
-        n_tilde: n_tilde {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp TILDE &kp N>;
-        };
+// Configuración de Unicode para Linux (IBus)
+&uc {
+    default-mode = <UC_MODE_LINUX>;
+};
 
-        // Vocales acentuadas mayúsculas
-        A_acute: A_acute {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SQT &kp LS(A)>;
-        };
-        E_acute: E_acute {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SQT &kp LS(E)>;
-        };
-        I_acute: I_acute {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SQT &kp LS(I)>;
-        };
-        O_acute: O_acute {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SQT &kp LS(O)>;
-        };
-        U_acute: U_acute {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SQT &kp LS(U)>;
-        };
-        N_tilde: N_tilde {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp TILDE &kp LS(N)>;
-        };
-    };
+/ {
+    // Macros eliminadas - ahora usamos Unicode nativo con &uc
 
     behaviors {
         // Home row mods para mejor typing
@@ -154,14 +97,6 @@
             layers = <BASE>;
         };
 
-        // Combo para ñ (L+;)
-        combo_ntilde {
-            timeout-ms = <50>;
-            key-positions = <18 19>;
-            bindings = <&n_tilde>;
-            layers = <BASE>;
-        };
-
         // Combo para CAPS WORD (ambos shifts)
         combo_capsword {
             timeout-ms = <50>;
@@ -218,97 +153,6 @@
             layers = <BASE>;
         };
 
-        // ═══════════════════════════════════════════════════════════
-        // COMBOS PARA ACENTOS ESPAÑOLES
-        // Usa dead keys de US-intl (' + vocal = vocal acentuada)
-        // Layout: Home row mod (A) + vocal superior = acento
-        // ═══════════════════════════════════════════════════════════
-
-        // Vocales acentuadas minúsculas (A home + vocal fila superior)
-        combo_a_acute {
-            timeout-ms = <50>;
-            key-positions = <10 0>; // A+Q = á
-            bindings = <&a_acute>;
-            layers = <BASE>;
-        };
-
-        combo_e_acute {
-            timeout-ms = <50>;
-            key-positions = <10 2>; // A+E = é
-            bindings = <&e_acute>;
-            layers = <BASE>;
-        };
-
-        combo_i_acute {
-            timeout-ms = <50>;
-            key-positions = <10 7>; // A+U = í
-            bindings = <&i_acute>;
-            layers = <BASE>;
-        };
-
-        combo_o_acute {
-            timeout-ms = <50>;
-            key-positions = <10 8>; // A+I = ó
-            bindings = <&o_acute>;
-            layers = <BASE>;
-        };
-
-        combo_u_acute {
-            timeout-ms = <50>;
-            key-positions = <10 6>; // A+Y = ú
-            bindings = <&u_acute>;
-            layers = <BASE>;
-        };
-
-        combo_n_tilde_alt {
-            timeout-ms = <50>;
-            key-positions = <25 26>; // N+M = ñ (alternativa a L+;)
-            bindings = <&n_tilde>;
-            layers = <BASE>;
-        };
-
-        // Vocales acentuadas MAYÚSCULAS (S home + vocal fila superior)
-        combo_A_acute {
-            timeout-ms = <50>;
-            key-positions = <11 0>; // S+Q = Á
-            bindings = <&A_acute>;
-            layers = <BASE>;
-        };
-
-        combo_E_acute {
-            timeout-ms = <50>;
-            key-positions = <11 2>; // S+E = É
-            bindings = <&E_acute>;
-            layers = <BASE>;
-        };
-
-        combo_I_acute {
-            timeout-ms = <50>;
-            key-positions = <11 7>; // S+U = Í
-            bindings = <&I_acute>;
-            layers = <BASE>;
-        };
-
-        combo_O_acute {
-            timeout-ms = <50>;
-            key-positions = <11 8>; // S+I = Ó
-            bindings = <&O_acute>;
-            layers = <BASE>;
-        };
-
-        combo_U_acute {
-            timeout-ms = <50>;
-            key-positions = <11 6>; // S+Y = Ú
-            bindings = <&U_acute>;
-            layers = <BASE>;
-        };
-
-        combo_N_tilde_upper {
-            timeout-ms = <50>;
-            key-positions = <11 25>; // S+N = Ñ
-            bindings = <&N_tilde>;
-            layers = <BASE>;
-        };
     };
 
     keymap {
@@ -345,7 +189,7 @@
         // ║  !     @     #     $     %      ^     &     *     (     )  ║
         // ║  1     2     3     4     5      6     7     8     9     0  ║
         // ║  `     ~     [     ]     {      }     |     \     -     =  ║
-        // ║            ___   DEL          RALT   ADJ                   ║
+        // ║            ___   DEL          SPANISH ADJ                  ║
         // ╚═══════════════════════════════════════════════════════════╝
 
         lower_layer {
@@ -358,7 +202,7 @@
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp GRAVE     &kp TILDE     &kp LBKT      &kp RBKT      &kp LBRC          &kp RBRC      &kp PIPE      &kp BSLH      &kp MINUS     &kp EQUAL
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                         &trans        &kp DEL                         &kp RALT      &mo ADJUST
+                                         &trans        &kp DEL                         &mo SPANISH   &mo ADJUST
         //                                             ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
             >;
         };
@@ -369,7 +213,7 @@
         // ║  TAB   F2    F3    F4    F5     F6    F7    F8    F9   F10 ║
         // ║ CTRL  ALT   GUI  SHFT   F11     H     J     K     L    F12 ║
         // ║ UNDO  CUT  COPY PASTE REDO    HOME  PGDN  PGUP  END   INS  ║
-        // ║            ADJ   ___          RALT   ___                   ║
+        // ║            ADJ   ___          SPANISH ___                  ║
         // ╚═══════════════════════════════════════════════════════════╝
 
         raise_layer {
@@ -382,7 +226,7 @@
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp LC(Z)     &kp LC(X)     &kp LC(C)     &kp LC(V)     &kp LC(Y)         &kp HOME      &kp PG_DN     &kp PG_UP     &kp END       &kp INS
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                         &mo ADJUST    &trans                          &kp RALT      &trans
+                                         &mo ADJUST    &trans                          &mo SPANISH   &trans
         //                                             ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
             >;
         };
@@ -408,6 +252,34 @@
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                          &trans        &trans                          &trans        &trans
         //                                             ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
+            >;
+        };
+
+        // ╔═══════════════════════════════════════════════════════════╗
+        // ║         CAPA SPANISH (Acentos españoles)                  ║
+        // ╠═══════════════════════════════════════════════════════════╣
+        // ║  ___   ___    é    ___   ___     ___    ú     í    ó    ___ ║
+        // ║   á    ___   ___   ___   ___     ___   ___   ___   ___   ___ ║
+        // ║  ___   ___   ___   ___   ___      ñ    ___   ___   ___   ___ ║
+        // ║            ___   ___          [HELD]  ___                  ║
+        // ║                                                             ║
+        // ║ UNICODE NATIVO - Funciona con layout US estándar           ║
+        // ║ Con Shift: Á É Í Ó Ú Ñ (mayúsculas automáticas)            ║
+        // ║ Requiere: IBus habilitado en Linux (Ctrl+Shift+U)          ║
+        // ╚═══════════════════════════════════════════════════════════╝
+
+        spanish_layer {
+            label = "SPANISH";
+            bindings = <
+        // ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮   ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮
+             &trans          &trans          &uc 0xE9 0xC9   &trans          &trans              &trans          &uc 0xFA 0xDA   &uc 0xED 0xCD   &uc 0xF3 0xD3   &trans
+        // ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤   ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤
+             &uc 0xE1 0xC1   &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans          &trans
+        // ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤   ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤
+             &trans          &trans          &trans          &trans          &trans              &uc 0xF1 0xD1   &trans          &trans          &trans          &trans
+        // ╰───────────────┴───────────────┴───────────────┼───────────────┼───────────────┤   ├───────────────┼───────────────┼───────────────┴───────────────┴───────────────╯
+                                             &trans          &trans                              &trans          &trans
+        //                                                   ╰───────────────┴───────────────╯   ╰───────────────┴───────────────╯
             >;
         };
     };
