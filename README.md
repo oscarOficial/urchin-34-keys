@@ -37,12 +37,22 @@
 - **Mano derecha**: J(Shift), K(GUI), L(Alt), ;(Ctrl)
 
 ### Combos útiles
+
+**Edición:**
 - **J + K**: ESC (perfecto para salir de modo insertar en Vim)
-- **E + W**: TAB
-- **L + ;**: Ñ
-- **K + L**: ' (comilla simple)
-- **M + ,**: " (comilla doble)
+- **W + E**: TAB
 - **Ambos Shifts**: Caps Word
+
+**Programación Web:**
+- **C + V**: `<` (HTML tags, comparaciones)
+- **, + .**: `>` (HTML tags, comparaciones)
+- **X + C**: `_` (snake_case variables)
+- **R + T**: `` ` `` (template literals JavaScript)
+- **K + L**: `'` (comilla simple)
+- **M + ,**: `"` (comilla doble)
+
+**Español:**
+- **L + ;**: Ñ
 
 ## 🚀 Instalación
 
@@ -115,20 +125,20 @@ Consulta `docs/layout.pdf` para un diagrama visual completo del layout.
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
 │      `      │      ~      │      [      │      ]      │      {      │   │      }      │      |      │      \      │      -      │      =      │
 ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                           │    ______   │     DEL     │   │    ______   │   ADJUST    │
+                                           │    ______   │     DEL     │   │    RALT     │   ADJUST    │
                                            ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
 ```
 
 ### Capa RAISE (Navegación)
 ```
 ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-│     F1      │     F2      │     F3      │     F4      │     F5      │   │     F6      │     F7      │     F8      │     F9      │    F10      │
+│     TAB     │     F2      │     F3      │     F4      │     F5      │   │     F6      │     F7      │     F8      │     F9      │    F10      │
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-│    Ctrl     │     Alt     │     GUI     │    Shift    │    F11      │   │    LEFT     │    DOWN     │     UP      │    RIGHT    │    F12      │
+│    Ctrl     │     Alt     │     GUI     │    Shift    │    F11      │   │   ← (H)     │   ↓ (J)     │   ↑ (K)     │   → (L)     │    F12      │
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
 │  Undo(^Z)   │  Cut(^X)    │  Copy(^C)   │ Paste(^V)   │  Redo(^Y)   │   │    HOME     │   PG_DN     │   PG_UP     │     END     │    INS      │
 ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                           │   ADJUST    │    ______   │   │    ______   │    ______   │
+                                           │   ADJUST    │    ______   │   │    RALT     │    ______   │
                                            ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
 ```
 
@@ -156,33 +166,46 @@ Para personalizar el layout:
 3. GitHub Actions compilará automáticamente el nuevo firmware
 4. Descarga los archivos `.uf2` de los artifacts y flashea
 
-### Ajustes recomendados
+### Ajustes optimizados para programación
 
-En `config/urchin.conf` puedes ajustar:
-- **Timeout de sleep**: `CONFIG_ZMK_IDLE_SLEEP_TIMEOUT` (en ms)
-- **Debounce**: `CONFIG_ZMK_KSCAN_DEBOUNCE_PRESS_MS` y `CONFIG_ZMK_KSCAN_DEBOUNCE_RELEASE_MS`
-- **Logging USB**: Útil para debugging, pero consume más batería
+**Configuración actual (`config/urchin.conf`):**
+- **Sleep timeout**: 30 minutos (1800000ms) - ideal para largas sesiones
+- **Debounce press**: 3ms - balance entre velocidad y estabilidad
+- **Debounce release**: 5ms
+- **Logging USB**: Desactivado para mayor batería
 
-En `config/urchin.keymap` puedes ajustar:
-- **Tapping term**: `tapping-term-ms` (tiempo para activar hold vs tap)
-- **Quick tap**: `quick-tap-ms` (ventana para double-tap)
-- **Combos timeout**: `timeout-ms` en cada combo
+**Timings del keymap (`config/urchin.keymap`):**
+- **Home row mods**: 250ms - balance óptimo para typing rápido
+- **Backspace/Delete**: 200ms - respuesta más rápida para edición
+- **Quick tap**: 175ms
+- **Combos**: 50ms - activación instantánea
+- **Prior idle**: 150ms - previene activaciones accidentales
 
 ## 💡 Consejos de Uso
 
+### Para Programación Web
+- **HTML/JSX**: Combos `<` (C+V) y `>` (,+.) para tags rápidos
+- **JavaScript**: Template literals con `` ` `` (R+T), `_` (X+C) para variables
+- **CSS/JSON**: Comillas `'` (K+L) y `"` (M+,) accesibles
+- **Edición rápida**: Backspace optimizado (200ms) con Delete al mantener
+- **Símbolos de código**: Todos los brackets, pipes en LOWER accesibles
+
 ### Para Neovim
 - El combo **J+K** para ESC es extremadamente útil para salir del modo insertar
-- La capa RAISE tiene todas las teclas de navegación accesibles sin mover las manos
+- La capa RAISE tiene navegación estilo Neovim (**HJKL**) en el home row
+- TAB dedicado en RAISE (primera posición) y combo **W+E** en BASE
 - Los atajos de copiar/pegar están en la capa RAISE fila inferior
 
 ### Para Español
 - El combo **L+;** genera Ñ rápidamente
+- **AltGr** disponible en capas LOWER y RAISE (pulgar derecho) para escribir Ñ con AltGr+N
 - Los acentos se pueden escribir usando la tecla muerta ` en la capa LOWER
 
 ### Home Row Mods
-- Los mods se activan manteniendo presionada la tecla
-- Práctica el timing para evitar activaciones accidentales
-- Ajusta `tapping-term-ms` si necesitas más/menos tiempo
+- Los mods se activan manteniendo presionada la tecla (250ms)
+- Timing optimizado para typing rápido en largas sesiones
+- `hold-trigger-on-release` previene activaciones accidentales al escribir rápido
+- Si necesitas más/menos tiempo, ajusta `tapping-term-ms` en el keymap
 
 ## 🔗 Enlaces Útiles
 
