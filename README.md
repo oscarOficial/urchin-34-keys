@@ -51,8 +51,23 @@
 - **K + L**: `'` (comilla simple)
 - **M + ,**: `"` (comilla doble)
 
-**Español:**
-- **L + ;**: Ñ
+**Español (requiere layout OS: US International):**
+- **Vocales acentuadas minúsculas:**
+  - **A + Q**: á
+  - **A + E**: é
+  - **A + U**: í
+  - **A + I**: ó
+  - **A + Y**: ú
+- **Vocales acentuadas mayúsculas:**
+  - **S + Q**: Á
+  - **S + E**: É
+  - **S + U**: Í
+  - **S + I**: Ó
+  - **S + Y**: Ú
+- **Ñ / ñ:**
+  - **L + ;**: ñ
+  - **N + M**: ñ (alternativa)
+  - **S + N**: Ñ
 
 ## 🚀 Instalación
 
@@ -197,9 +212,23 @@ Para personalizar el layout:
 - Los atajos de copiar/pegar están en la capa RAISE fila inferior
 
 ### Para Español
-- El combo **L+;** genera Ñ rápidamente
-- **AltGr** disponible en capas LOWER y RAISE (pulgar derecho) para escribir Ñ con AltGr+N
-- Los acentos se pueden escribir usando la tecla muerta ` en la capa LOWER
+
+**Configuración requerida del OS:**
+Para que los combos de acentos funcionen correctamente, debes configurar tu sistema operativo con el layout **US International**:
+
+```bash
+# Ubuntu/GNOME
+gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+intl')]"
+setxkbmap -layout us -variant intl
+```
+
+**Combos de acentos:**
+- **Vocales minúsculas**: A+Q (á), A+E (é), A+U (í), A+I (ó), A+Y (ú)
+- **Vocales mayúsculas**: S+Q (Á), S+E (É), S+U (Í), S+I (Ó), S+Y (Ú)
+- **Ñ minúscula**: L+; o N+M
+- **Ñ mayúscula**: S+N
+
+Estos combos utilizan dead keys de US International para generar los acentos. Alternativamente, puedes usar **AltGr** (disponible en capas LOWER y RAISE) para escribir acentos de forma tradicional.
 
 ### Home Row Mods
 - Los mods se activan manteniendo presionada la tecla (250ms)
