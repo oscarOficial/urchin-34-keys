@@ -11,6 +11,8 @@
 
 *Optimizada para programación con Neovim y escritura en español*
 
+✨ **Con soporte Unicode nativo para acentos españoles** - Funciona con layout US estándar
+
 [📥 Descargar](#-instalación) •
 [📖 Documentación](#-características) •
 [🎨 Layout Visual](docs/layout.pdf) •
@@ -31,6 +33,7 @@
 2. **LOWER**: Números y símbolos de programación
 3. **RAISE**: Navegación y teclas de función
 4. **ADJUST**: Configuración Bluetooth y media
+5. **SPANISH**: Acentos españoles con Unicode nativo
 
 ### Home Row Mods
 - **Mano izquierda**: A(Ctrl), S(Alt), D(GUI), F(Shift)
@@ -51,23 +54,23 @@
 - **K + L**: `'` (comilla simple)
 - **M + ,**: `"` (comilla doble)
 
-**Español (requiere layout OS: US International):**
+**Español (Unicode nativo - funciona con layout US estándar):**
+- Activa la capa SPANISH manteniendo el pulgar derecho desde LOWER o RAISE
 - **Vocales acentuadas minúsculas:**
-  - **A + Q**: á
-  - **A + E**: é
-  - **A + U**: í
-  - **A + I**: ó
-  - **A + Y**: ú
+  - **SPANISH + A**: á
+  - **SPANISH + E**: é
+  - **SPANISH + I**: í
+  - **SPANISH + O**: ó
+  - **SPANISH + U**: ú
 - **Vocales acentuadas mayúsculas:**
-  - **S + Q**: Á
-  - **S + E**: É
-  - **S + U**: Í
-  - **S + I**: Ó
-  - **S + Y**: Ú
+  - **SPANISH + Shift + A**: Á
+  - **SPANISH + Shift + E**: É
+  - **SPANISH + Shift + I**: Í
+  - **SPANISH + Shift + O**: Ó
+  - **SPANISH + Shift + U**: Ú
 - **Ñ / ñ:**
-  - **L + ;**: ñ
-  - **N + M**: ñ (alternativa)
-  - **S + N**: Ñ
+  - **SPANISH + N**: ñ
+  - **SPANISH + Shift + N**: Ñ
 
 ## 🚀 Instalación
 
@@ -107,12 +110,21 @@ urchin-zmk-config/
 ├── config/
 │   ├── urchin.keymap          # Definición del layout y capas
 │   ├── urchin.conf            # Configuración de ZMK
-│   └── west.yml               # Dependencias de ZMK
+│   └── west.yml               # Dependencias: ZMK + zmk-unicode
 ├── docs/
 │   └── layout.pdf             # Diagrama visual del layout
 ├── build.yaml                 # Configuración de compilación
 └── README.md                  # Este archivo
 ```
+
+### Módulos externos utilizados
+
+Este proyecto incluye las siguientes dependencias en `config/west.yml`:
+
+- **zmk** (v0.3.0) - Firmware base de ZMK
+- **urchin-zmk-module** - Módulo específico del hardware Urchin
+- **nice-view-gem** - Soporte para displays nice!view
+- **zmk-unicode** (v0.3) - Soporte Unicode nativo para acentos españoles
 
 ## 🎨 Layout Visual
 
@@ -140,7 +152,7 @@ Consulta `docs/layout.pdf` para un diagrama visual completo del layout.
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
 │      `      │      ~      │      [      │      ]      │      {      │   │      }      │      |      │      \      │      -      │      =      │
 ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                           │    ______   │     DEL     │   │    RALT     │   ADJUST    │
+                                           │    ______   │     DEL     │   │   SPANISH   │   ADJUST    │
                                            ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
 ```
 
@@ -153,13 +165,12 @@ Consulta `docs/layout.pdf` para un diagrama visual completo del layout.
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
 │  Undo(^Z)   │  Cut(^X)    │  Copy(^C)   │ Paste(^V)   │  Redo(^Y)   │   │    HOME     │   PG_DN     │   PG_UP     │     END     │    INS      │
 ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                           │   ADJUST    │    ______   │   │    RALT     │    ______   │
+                                           │   ADJUST    │    ______   │   │   SPANISH   │    ______   │
                                            ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
 ```
 
-### Capa ADJUST
+### Capa ADJUST (Bluetooth y Media)
 ```
-CAPA ADJUST:
 ╭─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────╮
 │ BT0 │ BT1 │ BT2 │ BT3 │ BT4 │   │BTCLR│     │     │     │     │
 ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
@@ -169,6 +180,23 @@ CAPA ADJUST:
 ╰─────┴─────┴─────┼─────┼─────┤   ├─────┼─────┼─────┴─────┴─────╯
                   │ __  │ __  │   │ __  │ __  │
                   ╰─────┴─────╯   ╰─────┴─────╯
+```
+
+### Capa SPANISH (Acentos)
+```
+╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+│             │             │      é      │             │             │   │             │      ú      │      í      │      ó      │             │
+├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│      á      │             │             │             │             │   │             │             │             │             │             │
+├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+│             │             │             │             │             │   │      ñ      │             │             │             │             │
+╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+                                           │             │             │   │   [HELD]    │             │
+                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
+
+Con Shift: Á É Í Ó Ú Ñ (mayúsculas automáticas)
+Unicode nativo - Funciona con layout US estándar
+Requiere IBus en Linux (incluido por defecto en Ubuntu)
 ```
 
 
@@ -213,22 +241,37 @@ Para personalizar el layout:
 
 ### Para Español
 
-**Configuración requerida del OS:**
-Para que los combos de acentos funcionen correctamente, debes configurar tu sistema operativo con el layout **US International**:
+**Configuración del sistema operativo:**
 
+Este teclado usa **Unicode nativo** para generar acentos españoles, lo que significa que funciona con el layout **US estándar** (sin necesidad de US-International).
+
+**Requisitos:**
+- **Linux (Ubuntu)**: IBus viene habilitado por defecto ✅
+- **Prueba de funcionamiento**: Abre un editor y presiona `Ctrl+Shift+U`, escribe `E1`, presiona `Espacio` → debería aparecer **á**
+
+**Layout recomendado:**
 ```bash
-# Ubuntu/GNOME
-gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+intl')]"
-setxkbmap -layout us -variant intl
+# Ubuntu/GNOME - Layout US estándar (sin dead keys)
+gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us')]"
+setxkbmap -layout us
 ```
 
-**Combos de acentos:**
-- **Vocales minúsculas**: A+Q (á), A+E (é), A+U (í), A+I (ó), A+Y (ú)
-- **Vocales mayúsculas**: S+Q (Á), S+E (É), S+U (Í), S+I (Ó), S+Y (Ú)
-- **Ñ minúscula**: L+; o N+M
-- **Ñ mayúscula**: S+N
+**Cómo escribir acentos:**
+1. Mantén presionado **ESC** (activa LOWER) o **ENTER** (activa RAISE)
+2. Mantén presionado el **pulgar derecho** (activa SPANISH)
+3. Presiona la **vocal** correspondiente
+4. Para mayúsculas: agrega **Shift**
 
-Estos combos utilizan dead keys de US International para generar los acentos. Alternativamente, puedes usar **AltGr** (disponible en capas LOWER y RAISE) para escribir acentos de forma tradicional.
+**Ejemplos:**
+- **á**: LOWER + SPANISH + A
+- **Ñ**: RAISE + SPANISH + Shift + N
+- **ó**: LOWER + SPANISH + O
+
+**Ventajas:**
+- ✅ Sin dead keys - Los símbolos `` ` ~ ' " `` aparecen inmediatamente
+- ✅ Funciona con layout US estándar
+- ✅ Mayúsculas automáticas con Shift
+- ✅ No interfiere con la programación
 
 ### Home Row Mods
 - Los mods se activan manteniendo presionada la tecla (250ms)
@@ -238,9 +281,15 @@ Estos combos utilizan dead keys de US International para generar los acentos. Al
 
 ## 🔗 Enlaces Útiles
 
+### Documentación oficial
 - [Documentación oficial de ZMK](https://zmk.dev/)
 - [Repositorio oficial de Urchin](https://github.com/duckyb/urchin)
 - [Comunidad de ZMK en Discord](https://zmk.dev/community/discord/invite)
+
+### Módulos utilizados
+- [zmk-unicode - Soporte Unicode nativo](https://github.com/urob/zmk-unicode)
+- [zmk-unicode - Guía de uso](https://anirudh.fi/zmk-unicode)
+- [nice-view-gem - Display support](https://github.com/M165437/nice-view-gem)
 
 ## 📄 Licencia
 
