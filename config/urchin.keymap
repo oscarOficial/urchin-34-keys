@@ -65,90 +65,139 @@
             hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31 32 33>;
             hold-trigger-on-release;
         };
-
-        // Backspace optimizado para programación (más rápido)
-        bspc_del: backspace_delete {
-            compatible = "zmk,behavior-hold-tap";
-            label = "BACKSPACE_DELETE";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
-            bindings = <&kp>, <&kp>;
-        };
     };
 
     combos {
         compatible = "zmk,combos";
-        
-        // Combo para ESC (J+K)
+
+        // ═══════════════════════════════════════════════════════════
+        // UTILIDADES (acceso rápido)
+        // ═══════════════════════════════════════════════════════════
+
+        // ESC - Salir de modos (vim, etc)
         combo_esc {
             timeout-ms = <50>;
-            key-positions = <16 17>;
+            key-positions = <16 17>;  // J+K
             bindings = <&kp ESC>;
             layers = <BASE>;
         };
 
-        // Combo para TAB (W+E)
+        // TAB - Indentación y navegación
         combo_tab {
             timeout-ms = <50>;
-            key-positions = <1 2>;
+            key-positions = <1 2>;  // W+E
             bindings = <&kp TAB>;
             layers = <BASE>;
         };
 
-        // Combo para CAPS WORD (ambos shifts)
+        // CAPS WORD - Mayúsculas temporales
         combo_capsword {
             timeout-ms = <50>;
-            key-positions = <13 16>;
+            key-positions = <13 16>;  // F+J (ambos shifts)
             bindings = <&caps_word>;
             layers = <BASE>;
         };
 
-        // Combo para comilla simple ' (K+L)
+        // ═══════════════════════════════════════════════════════════
+        // COMILLAS (mano izquierda, posiciones análogas)
+        // ═══════════════════════════════════════════════════════════
+
+        // ' - Comilla simple (strings, atributos)
         combo_single_quote {
             timeout-ms = <50>;
-            key-positions = <17 18>;
+            key-positions = <10 11>;  // A+S
             bindings = <&kp SQT>;
             layers = <BASE LOWER RAISE>;
         };
 
-        // Combo para comilla doble " (M+,)
+        // " - Comilla doble (strings)
         combo_double_quote {
             timeout-ms = <50>;
-            key-positions = <26 27>;
+            key-positions = <20 21>;  // Z+X
             bindings = <&kp DQT>;
             layers = <BASE LOWER RAISE>;
         };
 
-        // Combo para < (C+V) - HTML tags, comparaciones
+        // ═══════════════════════════════════════════════════════════
+        // ÁNGULOS (mano derecha, posiciones análogas)
+        // ═══════════════════════════════════════════════════════════
+
+        // < - HTML tags, comparaciones
         combo_less_than {
             timeout-ms = <50>;
-            key-positions = <22 23>;
+            key-positions = <17 18>;  // K+L
             bindings = <&kp LT>;
             layers = <BASE LOWER RAISE>;
         };
 
-        // Combo para > (,+.) - HTML tags, comparaciones
+        // > - HTML tags, comparaciones
         combo_greater_than {
             timeout-ms = <50>;
-            key-positions = <27 28>;
+            key-positions = <27 28>;  // ,+.
             bindings = <&kp GT>;
             layers = <BASE LOWER RAISE>;
         };
 
-        // Combo para _ (X+C) - snake_case variables
+        // ═══════════════════════════════════════════════════════════
+        // GUIONES (mano izquierda centro, posiciones análogas)
+        // ═══════════════════════════════════════════════════════════
+
+        // - (minus) - kebab-case, operador
+        combo_minus {
+            timeout-ms = <50>;
+            key-positions = <11 12>;  // S+D
+            bindings = <&kp MINUS>;
+            layers = <BASE LOWER RAISE>;
+        };
+
+        // _ (underscore) - snake_case
         combo_underscore {
             timeout-ms = <50>;
-            key-positions = <21 22>;
+            key-positions = <21 22>;  // X+C
             bindings = <&kp UNDER>;
             layers = <BASE LOWER RAISE>;
         };
 
-        // Combo para ` (R+T) - template literals
+        // ═══════════════════════════════════════════════════════════
+        // SÍMBOLOS DE PROGRAMACIÓN
+        // ═══════════════════════════════════════════════════════════
+
+        // = - Asignaciones, comparaciones
+        combo_equal {
+            timeout-ms = <50>;
+            key-positions = <12 13>;  // D+F
+            bindings = <&kp EQUAL>;
+            layers = <BASE LOWER RAISE>;
+        };
+
+        // + - Operador matemático, concatenación
+        combo_plus {
+            timeout-ms = <50>;
+            key-positions = <13 14>;  // F+G
+            bindings = <&kp PLUS>;
+            layers = <BASE LOWER RAISE>;
+        };
+
+        // : - JSON, CSS, objetos
+        combo_colon {
+            timeout-ms = <50>;
+            key-positions = <2 3>;  // E+R
+            bindings = <&kp COLON>;
+            layers = <BASE LOWER RAISE>;
+        };
+
+        // ~ - Regex, paths, aproximaciones
+        combo_tilde {
+            timeout-ms = <50>;
+            key-positions = <0 1>;  // Q+W
+            bindings = <&kp TILDE>;
+            layers = <BASE LOWER RAISE>;
+        };
+
+        // ` - Template literals (JS), markdown
         combo_backtick {
             timeout-ms = <50>;
-            key-positions = <3 4>;
+            key-positions = <3 4>;  // R+T
             bindings = <&kp GRAVE>;
             layers = <BASE>;
         };
@@ -161,11 +210,12 @@
         // ╔═══════════════════════════════════════════════════════════╗
         // ║                    CAPA BASE (QWERTY)                     ║
         // ╠═══════════════════════════════════════════════════════════╣
-        // ║  Q     W     E     R     T      Y     U     I     O     P  ║
-        // ║  A     S     D     F     G      H     J     K     L     Ñ  ║
-        // ║  Z     X     C     V     B      N     M     ,     .     /  ║
-        // ║            ESC   BSPC          SPC   ENT                   ║
-        // ║           (LOW) (CTRL)        (SHFT)(RAIS)                 ║
+        // ║  Q     W     E     R     T      Y     U     I     O     P ║
+        // ║  A     S     D     F     G      H     J     K     L     ; ║
+        // ║ (CTRL)(ALT)(GUI)(SHFT)         (sin mods en mano derecha) ║
+        // ║  Z     X     C     V     B      N     M     ,     .     / ║
+        // ║            ESC   BSPC          RET   SPC                  ║
+        // ║           (LOW)               (SHFT)(RAIS)                ║
         // ╚═══════════════════════════════════════════════════════════╝
         
         base_layer {
@@ -174,11 +224,11 @@
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
              &kp Q         &kp W         &kp E         &kp R         &kp T             &kp Y         &kp U         &kp I         &kp O         &kp P
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &hml LCTRL A  &hml LALT S   &hml LGUI D   &hml LSHFT F  &kp G             &kp H         &hmr RSHFT J  &hmr RGUI K   &hmr RALT L   &hmr RCTRL SEMI
+             &hml LCTRL A  &hml LALT S   &hml LGUI D   &hml LSHFT F  &kp G             &kp H         &kp J         &kp K         &kp L         &kp SEMI
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp Z         &kp X         &kp C         &kp V         &kp B             &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                         &lt LOWER ESC &bspc_del DEL BSPC              &mt LSHFT SPACE &lt RAISE RET
+                                         &lt LOWER ESC &kp BSPC                        &mt LSHFT RET &lt RAISE SPACE
         //                                             ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
             >;
         };
@@ -186,21 +236,23 @@
         // ╔═══════════════════════════════════════════════════════════╗
         // ║         CAPA LOWER (Números y Símbolos de Código)         ║
         // ╠═══════════════════════════════════════════════════════════╣
-        // ║  !     @     #     $     %      ^     &     *     (     )  ║
         // ║  1     2     3     4     5      6     7     8     9     0  ║
-        // ║  `     ~     [     ]     {      }     |     \     -     =  ║
+        // ║  (     {     [     $     %      ^     ]     }     )     !  ║
+        // ║  `     ~     @     #     -      =     *     &     \     |  ║
         // ║            ___   DEL          SPANISH ADJ                  ║
+        // ║                                                             ║
+        // ║ BRACKETS SIMÉTRICOS: Izq abre ( { [ | Der cierra ] } )     ║
         // ╚═══════════════════════════════════════════════════════════╝
 
         lower_layer {
             label = "LOWER";
             bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-             &kp EXCL      &kp AT        &kp HASH      &kp DLLR      &kp PRCNT         &kp CARET     &kp AMPS      &kp STAR      &kp LPAR      &kp RPAR
-        // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp N1        &kp N2        &kp N3        &kp N4        &kp N5            &kp N6        &kp N7        &kp N8        &kp N9        &kp N0
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp GRAVE     &kp TILDE     &kp LBKT      &kp RBKT      &kp LBRC          &kp RBRC      &kp PIPE      &kp BSLH      &kp MINUS     &kp EQUAL
+             &kp LPAR      &kp LBRC      &kp LBKT      &kp DLLR      &kp PRCNT         &kp CARET     &kp RBKT      &kp RBRC      &kp RPAR      &kp EXCL
+        // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+             &kp GRAVE     &kp TILDE     &kp AT        &kp HASH      &kp MINUS         &kp EQUAL     &kp STAR      &kp AMPS      &kp BSLH      &kp PIPE
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                          &trans        &kp DEL                         &mo SPANISH   &mo ADJUST
         //                                             ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
@@ -211,9 +263,11 @@
         // ║         CAPA RAISE (Navegación y Funciones)               ║
         // ╠═══════════════════════════════════════════════════════════╣
         // ║  TAB   F2    F3    F4    F5     F6    F7    F8    F9   F10 ║
-        // ║ CTRL  ALT   GUI  SHFT   F11     H     J     K     L    F12 ║
+        // ║ CTRL  ALT   GUI  SHFT   F11    LEFT  DOWN   UP  RIGHT  F12 ║
         // ║ UNDO  CUT  COPY PASTE REDO    HOME  PGDN  PGUP  END   INS  ║
         // ║            ADJ   ___          SPANISH ___                  ║
+        // ║                                                             ║
+        // ║ Navegación estilo Neovim (flechas) en home row derecha     ║
         // ╚═══════════════════════════════════════════════════════════╝
 
         raise_layer {
