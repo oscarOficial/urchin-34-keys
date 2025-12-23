@@ -36,7 +36,29 @@
 };
 
 / {
-    // Macros eliminadas - ahora usamos Unicode nativo con &uc
+    macros {
+        // Super+Tab - Cambiar a siguiente ventana (Ubuntu/GNOME)
+        alt_tab: alt_tab {
+            compatible = "zmk,behavior-macro";
+            label = "SUPER_TAB";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp TAB>
+                     , <&macro_release &kp LGUI>;
+        };
+
+        // Super+Shift+Tab - Cambiar a ventana anterior (Ubuntu/GNOME)
+        alt_shift_tab: alt_shift_tab {
+            compatible = "zmk,behavior-macro";
+            label = "SUPER_SHIFT_TAB";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_press &kp LSHFT>
+                     , <&macro_tap &kp TAB>
+                     , <&macro_release &kp LSHFT>
+                     , <&macro_release &kp LGUI>;
+        };
+    };
 
     behaviors {
         // Home row mods para mejor typing
@@ -237,11 +259,12 @@
         // ║         CAPA LOWER (Números y Símbolos de Código)         ║
         // ╠═══════════════════════════════════════════════════════════╣
         // ║  1     2     3     4     5      6     7     8     9     0  ║
-        // ║  (     {     [     $     %      ^     ]     }     )     !  ║
+        // ║  $     (     {     [     %      ^     ]     }     )     !  ║
         // ║  `     ~     @     #     -      =     *     &     \     |  ║
         // ║            ___   DEL          SPANISH ADJ                  ║
         // ║                                                             ║
         // ║ BRACKETS SIMÉTRICOS: Izq abre ( { [ | Der cierra ] } )     ║
+        // ║ Brackets en anular/medio/índice (más ergonómico)           ║
         // ╚═══════════════════════════════════════════════════════════╝
 
         lower_layer {
@@ -250,7 +273,7 @@
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
              &kp N1        &kp N2        &kp N3        &kp N4        &kp N5            &kp N6        &kp N7        &kp N8        &kp N9        &kp N0
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp LPAR      &kp LBRC      &kp LBKT      &kp DLLR      &kp PRCNT         &kp CARET     &kp RBKT      &kp RBRC      &kp RPAR      &kp EXCL
+             &kp DLLR      &kp LPAR      &kp LBRC      &kp LBKT      &kp PRCNT         &kp CARET     &kp RBKT      &kp RBRC      &kp RPAR      &kp EXCL
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp GRAVE     &kp TILDE     &kp AT        &kp HASH      &kp MINUS         &kp EQUAL     &kp STAR      &kp AMPS      &kp BSLH      &kp PIPE
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
@@ -262,21 +285,22 @@
         // ╔═══════════════════════════════════════════════════════════╗
         // ║         CAPA RAISE (Navegación y Funciones)               ║
         // ╠═══════════════════════════════════════════════════════════╣
-        // ║  TAB   F2    F3    F4    F5     F6    F7    F8    F9   F10 ║
-        // ║ CTRL  ALT   GUI  SHFT   F11    LEFT  DOWN   UP  RIGHT  F12 ║
+        // ║SUPER_TAB F2   F3    F4    F5     F6    F7    F8    F9   PRSC ║
+        // ║SUPER_S_TAB ALT GUI SHFT  F11    LEFT  DOWN   UP  RIGHT  F12 ║
         // ║ UNDO  CUT  COPY PASTE REDO    HOME  PGDN  PGUP  END   INS  ║
         // ║            ADJ   ___          SPANISH ___                  ║
         // ║                                                             ║
-        // ║ Navegación estilo Neovim (flechas) en home row derecha     ║
+        // ║ Q: Super+Tab (siguiente) | A: Super+Shift+Tab (anterior)   ║
+        // ║ Ubuntu/GNOME compatible - Navegación Neovim en home row    ║
         // ╚═══════════════════════════════════════════════════════════╝
 
         raise_layer {
             label = "RAISE";
             bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-             &kp TAB       &kp F2        &kp F3        &kp F4        &kp F5            &kp F6        &kp F7        &kp F8        &kp F9        &kp F10
+             &alt_tab      &kp F2        &kp F3        &kp F4        &kp F5            &kp F6        &kp F7        &kp F8        &kp F9        &kp PSCRN
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp LCTRL     &kp LALT      &kp LGUI      &kp LSHFT     &kp F11           &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp F12
+             &alt_shift_tab &kp LALT     &kp LGUI      &kp LSHFT     &kp F11           &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp F12
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp LC(Z)     &kp LC(X)     &kp LC(C)     &kp LC(V)     &kp LC(Y)         &kp HOME      &kp PG_DN     &kp PG_UP     &kp END       &kp INS
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯

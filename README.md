@@ -163,7 +163,7 @@ Este proyecto incluye las siguientes dependencias en `config/west.yml`:
 ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
 │      1      │      2      │      3      │      4      │      5      │   │      6      │      7      │      8      │      9      │      0      │
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-│      (      │      {      │      [      │      $      │      %      │   │      ^      │      ]      │      }      │      )      │      !      │
+│      $      │      (      │      {      │      [      │      %      │   │      ^      │      ]      │      }      │      )      │      !      │
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
 │      `      │      ~      │      @      │      #      │      -      │   │      =      │      *      │      &      │      \      │      |      │
 ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
@@ -171,21 +171,24 @@ Este proyecto incluye las siguientes dependencias en `config/west.yml`:
                                            ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
 
 Brackets simétricos: Izquierda abre ( { [ | Derecha cierra ] } )
+Brackets en anular/medio/índice (más ergonómico - libera el meñique)
 ```
 
 ### Capa RAISE (Navegación)
 ```
 ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-│     TAB     │     F2      │     F3      │     F4      │     F5      │   │     F6      │     F7      │     F8      │     F9      │    F10      │
+│ SUPER+TAB   │     F2      │     F3      │     F4      │     F5      │   │     F6      │     F7      │     F8      │     F9      │   PSCRN     │
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-│    Ctrl     │     Alt     │     GUI     │    Shift    │    F11      │   │      ←      │      ↓      │      ↑      │      →      │    F12      │
+│ SUPER+S+TAB │     Alt     │     GUI     │    Shift    │    F11      │   │      ←      │      ↓      │      ↑      │      →      │    F12      │
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
 │  Undo(^Z)   │  Cut(^X)    │  Copy(^C)   │ Paste(^V)   │  Redo(^Y)   │   │    HOME     │   PG_DN     │   PG_UP     │     END     │    INS      │
 ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                            │   ADJUST    │    ______   │   │   SPANISH   │    ______   │
                                            ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
 
+Cambio de ventanas: SUPER+TAB (siguiente), SUPER+SHIFT+TAB (anterior) - Ubuntu/GNOME
 Navegación estilo Neovim (HJKL) en home row derecha
+Print Screen disponible en posición P (RAISE + P)
 ```
 
 ### Capa ADJUST (Bluetooth y Media)
@@ -259,7 +262,8 @@ Para personalizar el layout:
 ### Para Neovim
 - El combo **J+K** para ESC es extremadamente útil para salir del modo insertar
 - La capa RAISE tiene navegación estilo Neovim (**HJKL**) en el home row
-- TAB dedicado en RAISE (primera posición) y combo **W+E** en BASE
+- Cambio de ventanas con **Super+Tab** (RAISE+Q) y **Super+Shift+Tab** (RAISE+A)
+- TAB disponible con combo **W+E** en BASE
 - Los atajos de copiar/pegar están en la capa RAISE fila inferior
 
 ### Para Español
