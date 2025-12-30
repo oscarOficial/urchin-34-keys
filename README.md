@@ -39,7 +39,7 @@
 2. **LOWER**: Números y símbolos de programación
 3. **RAISE**: Navegación y teclas de función
 4. **ADJUST**: Configuración Bluetooth y media
-5. **SPANISH**: Acentos españoles con Unicode nativo
+5. **SpanFish**: Spanish + F-keys - Acentos españoles + F1-F12 en home row (Unicode nativo)
 
 ### Home Row Mods
 - **Mano izquierda**: A(Ctrl), S(Alt), D(GUI), F(Shift)
@@ -71,23 +71,27 @@
 - **Q + W**: `~` (tilde - regex, paths)
 - **R + T**: `` ` `` (backtick - template literals)
 
-**Español (Unicode nativo - funciona con layout US estándar):**
-- Activa la capa SPANISH manteniendo el pulgar derecho desde LOWER o RAISE
+**Español + F-keys (Unicode nativo - funciona con layout US estándar):**
+- Activa la capa SpanFish manteniendo el pulgar derecho desde LOWER o RAISE
 - **Vocales acentuadas minúsculas:**
-  - **SPANISH + A**: á
-  - **SPANISH + E**: é
-  - **SPANISH + I**: í
-  - **SPANISH + O**: ó
-  - **SPANISH + U**: ú
+  - **SpanFish + A** (hold): á
+  - **SpanFish + E**: é
+  - **SpanFish + I**: í
+  - **SpanFish + O**: ó
+  - **SpanFish + U**: ú
 - **Vocales acentuadas mayúsculas:**
-  - **SPANISH + Shift + A**: Á
-  - **SPANISH + Shift + E**: É
-  - **SPANISH + Shift + I**: Í
-  - **SPANISH + Shift + O**: Ó
-  - **SPANISH + Shift + U**: Ú
+  - **SpanFish + Shift + A** (hold): Á
+  - **SpanFish + Shift + E**: É
+  - **SpanFish + Shift + I**: Í
+  - **SpanFish + Shift + O**: Ó
+  - **SpanFish + Shift + U**: Ú
 - **Ñ / ñ:**
-  - **SPANISH + N**: ñ
-  - **SPANISH + Shift + N**: Ñ
+  - **SpanFish + N**: ñ
+  - **SpanFish + Shift + N**: Ñ
+- **F-keys (F1-F12 en home row):**
+  - **F1-F10**: Home row (A-;)
+  - **F11-F12**: Fila inferior (Z, X)
+  - **A:** Tap=F1, Hold=á/Á (hold-tap behavior)
 
 ## 🚀 Instalación
 
@@ -167,7 +171,7 @@ Este proyecto incluye las siguientes dependencias en `config/west.yml`:
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
 │      `      │      ~      │      @      │      #      │      -      │   │      =      │      *      │      &      │      \      │      |      │
 ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                           │    ______   │     DEL     │   │   SPANISH   │   ADJUST    │
+                                           │    ______   │     DEL     │   │  SpanFish   │   ADJUST    │
                                            ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
 
 Brackets simétricos: Izquierda abre ( { [ | Derecha cierra ] } )
@@ -177,18 +181,20 @@ Brackets en anular/medio/índice (más ergonómico - libera el meñique)
 ### Capa RAISE (Navegación)
 ```
 ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-│ SUPER+TAB   │     F2      │     F3      │     F4      │     F5      │   │     F6      │     F7      │     F8      │     F9      │   PSCRN     │
+│    SUPER    │     F2      │     F3      │     F4      │     F5      │   │     F6      │     F7      │     F8      │     F9      │   PSCRN     │
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-│ SUPER+S+TAB │     Alt     │     GUI     │    Shift    │    F11      │   │      ←      │      ↓      │      ↑      │      →      │    F12      │
+│   ALT+F4    │     Alt     │     GUI     │    Shift    │    F11      │   │      ←      │      ↓      │      ↑      │      →      │    F12      │
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-│  Undo(^Z)   │  Cut(^X)    │  Copy(^C)   │ Paste(^V)   │  Redo(^Y)   │   │    HOME     │   PG_DN     │   PG_UP     │     END     │    INS      │
+│  Undo(^Z)   │  Cut(^X)    │ Copy+(^S^C) │Paste+(^S^V) │  Redo(^Y)   │   │    HOME     │   PG_DN     │   PG_UP     │     END     │    INS      │
 ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                           │   ADJUST    │    ______   │   │   SPANISH   │    ______   │
+                                           │   ADJUST    │    ______   │   │  SpanFish   │    ______   │
                                            ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
 
-Cambio de ventanas: SUPER+TAB (siguiente), SUPER+SHIFT+TAB (anterior) - Ubuntu/GNOME
+Navegación Ubuntu/GNOME: SUPER (Activities), ALT+F4 (cerrar ventana)
 Navegación estilo Neovim (HJKL) en home row derecha
+Copy+/Paste+: Ctrl+Shift+C/V (portapapeles del sistema para Neovim)
 Print Screen disponible en posición P (RAISE + P)
+F1 y F10: Disponibles en capa SpanFish (home row ergonómico)
 ```
 
 ### Capa ADJUST (Bluetooth y Media)
@@ -204,18 +210,21 @@ Print Screen disponible en posición P (RAISE + P)
                   ╰─────┴─────╯   ╰─────┴─────╯
 ```
 
-### Capa SPANISH (Acentos)
+### Capa SpanFish (Spanish + F-keys)
 ```
 ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
 │             │             │      é      │             │             │   │             │      ú      │      í      │      ó      │             │
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-│      á      │             │             │             │             │   │             │             │             │             │             │
+│   F1 / á    │     F2      │     F3      │     F4      │     F5      │   │     F6      │     F7      │     F8      │     F9      │    F10      │
+│   (tap/hold)│             │             │             │             │   │             │             │             │             │             │
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-│             │             │             │             │             │   │      ñ      │             │             │             │             │
+│     F11     │     F12     │             │             │             │   │      ñ      │             │             │             │             │
 ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                            │             │             │   │   [HELD]    │             │
                                            ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
 
+Diseño ergonómico: F1-F12 en home row + Acentos españoles
+Posición A: Tap=F1, Hold=á/Á (hold-tap behavior - 200ms)
 Con Shift: Á É Í Ó Ú Ñ (mayúsculas automáticas)
 Unicode nativo - Funciona con layout US estándar
 Requiere IBus en Linux (incluido por defecto en Ubuntu)
@@ -262,9 +271,11 @@ Para personalizar el layout:
 ### Para Neovim
 - El combo **J+K** para ESC es extremadamente útil para salir del modo insertar
 - La capa RAISE tiene navegación estilo Neovim (**HJKL**) en el home row
-- Cambio de ventanas con **Super+Tab** (RAISE+Q) y **Super+Shift+Tab** (RAISE+A)
+- **Navegación Ubuntu/GNOME**: **Super** (RAISE+Q) abre Activities, **Alt+F4** (RAISE+A) cierra ventana
+- **Portapapeles del sistema**: **Ctrl+Shift+C** (RAISE+C) y **Ctrl+Shift+V** (RAISE+V) - perfecto para copiar/pegar entre Neovim y otras aplicaciones
 - TAB disponible con combo **W+E** en BASE
-- Los atajos de copiar/pegar están en la capa RAISE fila inferior
+- Undo/Redo: **Ctrl+Z** (RAISE+Z) y **Ctrl+Y** (RAISE+B)
+- **F-keys**: F1-F12 completas en SpanFish layer (home row ergonómico)
 
 ### Para Español
 
@@ -284,15 +295,17 @@ setxkbmap -layout us
 ```
 
 **Cómo escribir acentos:**
-1. Mantén presionado **ESC** (activa LOWER) o **ENTER** (activa RAISE)
-2. Mantén presionado el **pulgar derecho** (activa SPANISH)
+1. Mantén presionado **ESC** (activa LOWER) o **SPACE** (activa RAISE)
+2. Mantén presionado el **pulgar derecho** (activa SpanFish)
 3. Presiona la **vocal** correspondiente
 4. Para mayúsculas: agrega **Shift**
+5. Para **á** desde A: mantener presionado A (hold-tap behavior)
 
 **Ejemplos:**
-- **á**: LOWER + SPANISH + A
-- **Ñ**: RAISE + SPANISH + Shift + N
-- **ó**: LOWER + SPANISH + O
+- **á**: LOWER + SpanFish + A (hold)
+- **Ñ**: RAISE + SpanFish + Shift + N
+- **ó**: LOWER + SpanFish + O
+- **F1**: LOWER + SpanFish + A (tap rápido)
 
 **Ventajas:**
 - ✅ Sin dead keys - Los símbolos `` ` ~ ' " `` aparecen inmediatamente
