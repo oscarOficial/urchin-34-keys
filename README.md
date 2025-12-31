@@ -24,7 +24,7 @@
 
 ## 📸 Vista Previa
 
-![Urchin Layout](layout.png)
+![Urchin Layout](layout.svg)
 
 ---
 
