@@ -20,7 +20,7 @@ layers:
   - J
   - K
   - L
-  - SEMI
+  - ;
   - Z
   - X
   - C
@@ -28,9 +28,9 @@ layers:
   - B
   - N
   - M
-  - COMMA
-  - DOT
-  - FSLH
+  - ','
+  - .
+  - /
   - {t: ESC, h: LOWER}
   - BSPC
   - {t: RET, h: LSHFT}
@@ -46,26 +46,26 @@ layers:
   - '8'
   - '9'
   - '0'
-  - DLLR
-  - LPAR
-  - LBRC
-  - LBKT
-  - PRCNT
-  - CARET
-  - RBKT
-  - RBRC
-  - RPAR
-  - EXCL
-  - GRAVE
-  - TILDE
-  - AT
-  - HASH
-  - MINUS
-  - EQUAL
-  - STAR
-  - AMPS
-  - BSLH
-  - PIPE
+  - $
+  - (
+  - '{'
+  - '['
+  - '%'
+  - ^
+  - ']'
+  - '}'
+  - )
+  - '!'
+  - '`'
+  - '~'
+  - '@'
+  - '#'
+  - '-'
+  - '='
+  - '*'
+  - '&'
+  - \
+  - '|'
   - {type: held}
   - DEL
   - SpanFish
@@ -186,38 +186,38 @@ combos:
   k: '&caps_word'
   l: [BASE]
 - p: [10, 11]
-  k: SQT
+  k: ''''
   l: [BASE, LOWER, RAISE]
 - p: [20, 21]
-  k: DQT
+  k: '"'
   l: [BASE, LOWER, RAISE]
 - p: [17, 18]
-  k: LT
+  k: <
   l: [BASE, LOWER, RAISE]
 - p: [27, 28]
-  k: GT
+  k: '>'
   l: [BASE, LOWER, RAISE]
 - p: [11, 12]
-  k: MINUS
+  k: '-'
   l: [BASE, LOWER, RAISE]
 - p: [21, 22]
-  k: UNDER
+  k: _
   l: [BASE, LOWER, RAISE]
 - p: [18, 19]
   k: Ctl+A
   l: [BASE, LOWER, RAISE]
 - p: [12, 13]
-  k: EQUAL
+  k: '='
   l: [BASE, LOWER, RAISE]
 - p: [13, 14]
-  k: PLUS
+  k: +
   l: [BASE, LOWER, RAISE]
 - p: [2, 3]
-  k: COLON
+  k: ':'
   l: [BASE, LOWER, RAISE]
 - p: [0, 1]
-  k: TILDE
+  k: '~'
   l: [BASE, LOWER, RAISE]
 - p: [3, 4]
-  k: GRAVE
+  k: '`'
   l: [BASE]
