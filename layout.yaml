@@ -72,25 +72,25 @@ layers:
   - ADJUST
   RAISE:
   - LGUI
-  - F2
-  - F3
-  - F4
-  - F5
-  - F6
-  - F7
-  - F8
-  - F9
-  - PSCRN
-  - '&alt_f4'
+  - Alt+Tab
+  - Alt+Sft+Tab
+  - Super+Tab
+  - Super+D
+  - WS←
+  - Tile←
+  - Max
+  - Tile→
+  - WS→
+  - Alt+F4
   - LALT
   - LGUI
   - LSHFT
-  - F11
+  - Min
   - LEFT
   - DOWN
   - UP
   - RIGHT
-  - F12
+  - PSCRN
   - Ctl+Z
   - Ctl+X
   - Ctl+Sft+C

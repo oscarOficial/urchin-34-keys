@@ -15,8 +15,7 @@
 
 [📥 Descargar](#-instalación) •
 [📖 Documentación](#-características) •
-[🎨 Layout Visual](docs/layout.pdf) •
-[🚀 Guía Rápida](QUICK_REFERENCE.md)
+[🎨 Layout Visual](layout.svg)
 
 </div>
 
@@ -35,11 +34,11 @@
 - 2 teclas de pulgar por mano (4 total)
 
 ### Capas
-1. **BASE**: QWERTY español con home row mods
-2. **LOWER**: Números y símbolos de programación
-3. **RAISE**: Navegación y teclas de función
-4. **ADJUST**: Configuración Bluetooth y media
-5. **SpanFish**: Spanish + F-keys - Acentos españoles + F1-F12 en home row (Unicode nativo)
+1. **BASE**: QWERTY con home row mods (solo mano izquierda)
+2. **LOWER**: Números y símbolos de programación (brackets simétricos)
+3. **RAISE**: Gestión de ventanas y navegación (optimizado para Ubuntu/GNOME)
+4. **ADJUST**: Configuración Bluetooth y controles multimedia
+5. **SpanFish**: Acentos españoles + F1-F12 en home row (Unicode nativo)
 
 ### Home Row Mods
 - **Mano izquierda**: A(Ctrl), S(Alt), D(GUI), F(Shift)
@@ -71,27 +70,29 @@
 - **Q + W**: `~` (tilde - regex, paths)
 - **R + T**: `` ` `` (backtick - template literals)
 
-**Español + F-keys (Unicode nativo - funciona con layout US estándar):**
+**✏️ Atajos de edición:**
+- **L + ;**: Ctrl+A (seleccionar todo - combo mano derecha)
+
+**🌐 Español + F-keys (Unicode nativo - funciona con layout US estándar):**
 - Activa la capa SpanFish manteniendo el pulgar derecho desde LOWER o RAISE
 - **Vocales acentuadas minúsculas:**
-  - **SpanFish + A** (hold): á
+  - **SpanFish + Q**: á
   - **SpanFish + E**: é
+  - **SpanFish + U**: ú
   - **SpanFish + I**: í
   - **SpanFish + O**: ó
-  - **SpanFish + U**: ú
 - **Vocales acentuadas mayúsculas:**
-  - **SpanFish + Shift + A** (hold): Á
+  - **SpanFish + Shift + Q**: Á
   - **SpanFish + Shift + E**: É
+  - **SpanFish + Shift + U**: Ú
   - **SpanFish + Shift + I**: Í
   - **SpanFish + Shift + O**: Ó
-  - **SpanFish + Shift + U**: Ú
 - **Ñ / ñ:**
   - **SpanFish + N**: ñ
   - **SpanFish + Shift + N**: Ñ
 - **F-keys (F1-F12 en home row):**
-  - **F1-F10**: Home row (A-;)
+  - **F1-F10**: Home row (A, S, D, F, G, H, J, K, L, ;)
   - **F11-F12**: Fila inferior (Z, X)
-  - **A:** Tap=F1, Hold=á/Á (hold-tap behavior)
 
 ## 🚀 Instalación
 
@@ -124,19 +125,34 @@ Si necesitas resetear la configuración Bluetooth:
 ## 📝 Estructura del Proyecto
 
 ```
-urchin-zmk-config/
+
+urchin-34-keys/
 ├── .github/
 │   └── workflows/
-│       └── build.yml          # GitHub Actions para compilación automática
+│       └── build.yml                # GitHub Actions para compilación automática
 ├── config/
-│   ├── urchin.keymap          # Definición del layout y capas
-│   ├── urchin.conf            # Configuración de ZMK
-│   └── west.yml               # Dependencias: ZMK + zmk-unicode
-├── docs/
-│   └── layout.pdf             # Diagrama visual del layout
-├── build.yaml                 # Configuración de compilación
-└── README.md                  # Este archivo
+│   ├── urchin.keymap                # Definición del layout y capas
+│   ├── urchin.conf                  # Configuración de ZMK
+│   └── west.yml                     # Dependencias: ZMK + zmk-unicode
+├── scripts/
+│   ├── update-keymap-assets.sh      # Auto-actualiza layout.yaml y layout.svg
+│   ├── fix-layout-unicode.sh        # Convierte códigos Unicode a símbolos españoles
+│   └── README.md                    # Documentación de scripts
+├── keymap-drawer.config.yaml        # Configuración generador visual (modo oscuro)
+├── layout.yaml                      # Definición keymap (auto-generado)
+├── layout.svg                       # Diagrama visual del layout (auto-generado, modo oscuro)
+├── build.yaml                       # Configuración de compilación
+└── README.md                        # Este archivo
 ```
+
+### Flujo Automatizado
+
+Este proyecto incluye un **pre-commit hook** que automáticamente:
+1. Parsea `config/urchin.keymap` → `layout.yaml`
+2. Convierte códigos Unicode a símbolos españoles (á é í ó ú ñ)
+3. Genera `layout.svg` con estilo modo oscuro
+
+¡Cuando modificas `config/urchin.keymap` y haces commit, todos los assets visuales se actualizan automáticamente!
 
 ### Módulos externos utilizados
 
@@ -178,23 +194,27 @@ Brackets simétricos: Izquierda abre ( { [ | Derecha cierra ] } )
 Brackets en anular/medio/índice (más ergonómico - libera el meñique)
 ```
 
-### Capa RAISE (Navegación)
+### Capa RAISE (Gestión de Ventanas y Navegación)
 ```
 ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-│    SUPER    │     F2      │     F3      │     F4      │     F5      │   │     F6      │     F7      │     F8      │     F9      │   PSCRN     │
+│    SUPER    │   Alt+Tab   │ Alt+Sft+Tab │  Super+Tab  │  Super+D    │   │     WS←     │    Tile←    │     Max     │    Tile→    │     WS→     │
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-│   ALT+F4    │     Alt     │     GUI     │    Shift    │    F11      │   │      ←      │      ↓      │      ↑      │      →      │    F12      │
+│   Alt+F4    │     Alt     │     GUI     │    Shift    │     Min     │   │      ←      │      ↓      │      ↑      │      →      │   PSCRN     │
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
 │  Undo(^Z)   │  Cut(^X)    │ Copy+(^S^C) │Paste+(^S^V) │  Redo(^Y)   │   │    HOME     │   PG_DN     │   PG_UP     │     END     │    INS      │
 ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                            │   ADJUST    │    ______   │   │  SpanFish   │    ______   │
                                            ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
 
-Navegación Ubuntu/GNOME: SUPER (Activities), ALT+F4 (cerrar ventana)
-Navegación estilo Neovim (HJKL) en home row derecha
-Copy+/Paste+: Ctrl+Shift+C/V (portapapeles del sistema para Neovim)
-Print Screen disponible en posición P (RAISE + P)
-F1 y F10: Disponibles en capa SpanFish (home row ergonómico)
+Gestión de Ventanas (Ubuntu/GNOME):
+- Alt+Tab / Alt+Shift+Tab: Cambiar entre aplicaciones (adelante/atrás)
+- Super+Tab: Mostrar todas las apps | Super+D: Mostrar escritorio
+- Tile←/Tile→/Max: Super+Izq/Der/Arriba (tiling de ventanas)
+- Min: Super+H (minimizar) | Alt+F4: Cerrar ventana
+- WS←/WS→: Ctrl+Alt+Izq/Der (cambiar workspaces)
+- Navegación: Flechas estilo Vim (HJKL) en home row derecha
+- Copy/Paste: Ctrl+Shift+C/V (compatible con terminal/portapapeles sistema)
+- F1-F12: Disponibles en capa SpanFish (acceso ergonómico home row)
 ```
 
 ### Capa ADJUST (Bluetooth y Media)
@@ -210,21 +230,20 @@ F1 y F10: Disponibles en capa SpanFish (home row ergonómico)
                   ╰─────┴─────╯   ╰─────┴─────╯
 ```
 
-### Capa SpanFish (Spanish + F-keys)
+### Capa SpanFish (Español + F-keys)
 ```
 ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-│             │             │      é      │             │             │   │             │      ú      │      í      │      ó      │             │
+│      á      │             │      é      │             │             │   │             │      ú      │      í      │      ó      │             │
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-│   F1 / á    │     F2      │     F3      │     F4      │     F5      │   │     F6      │     F7      │     F8      │     F9      │    F10      │
-│   (tap/hold)│             │             │             │             │   │             │             │             │             │             │
+│     F1      │     F2      │     F3      │     F4      │     F5      │   │     F6      │     F7      │     F8      │     F9      │    F10      │
 ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
 │     F11     │     F12     │             │             │             │   │      ñ      │             │             │             │             │
 ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                            │             │             │   │   [HELD]    │             │
                                            ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
 
-Diseño ergonómico: F1-F12 en home row + Acentos españoles
-Posición A: Tap=F1, Hold=á/Á (hold-tap behavior - 200ms)
+Diseño ergonómico: F1-F12 en home row + caracteres acentuados españoles
+Acentos en posiciones naturales: Q(á), E(é), U(ú), I(í), O(ó), N(ñ)
 Con Shift: Á É Í Ó Ú Ñ (mayúsculas automáticas)
 Unicode nativo - Funciona con layout US estándar
 Requiere IBus en Linux (incluido por defecto en Ubuntu)
@@ -270,12 +289,18 @@ Para personalizar el layout:
 
 ### Para Neovim
 - El combo **J+K** para ESC es extremadamente útil para salir del modo insertar
-- La capa RAISE tiene navegación estilo Neovim (**HJKL**) en el home row
-- **Navegación Ubuntu/GNOME**: **Super** (RAISE+Q) abre Activities, **Alt+F4** (RAISE+A) cierra ventana
+- La capa RAISE tiene navegación estilo Vim (**HJKL**) en el home row
+- **Navegación Ubuntu/GNOME**:
+  - **Super** (RAISE+Q): Abrir Activities
+  - **Alt+Tab** (RAISE+W): Cambiar aplicaciones
+  - **Alt+F4** (RAISE+A): Cerrar ventana
+  - **Tiling de ventanas** (RAISE+U/I/O): Izquierda/Maximizar/Derecha
+  - **Cambiar workspaces** (RAISE+Y/P): Izquierda/Derecha
 - **Portapapeles del sistema**: **Ctrl+Shift+C** (RAISE+C) y **Ctrl+Shift+V** (RAISE+V) - perfecto para copiar/pegar entre Neovim y otras aplicaciones
+- **Seleccionar todo**: **Ctrl+A** (combo L+; en capa BASE)
 - TAB disponible con combo **W+E** en BASE
 - Undo/Redo: **Ctrl+Z** (RAISE+Z) y **Ctrl+Y** (RAISE+B)
-- **F-keys**: F1-F12 completas en SpanFish layer (home row ergonómico)
+- **F-keys**: F1-F12 completas en capa SpanFish (acceso ergonómico home row)
 
 ### Para Español
 
@@ -297,15 +322,14 @@ setxkbmap -layout us
 **Cómo escribir acentos:**
 1. Mantén presionado **ESC** (activa LOWER) o **SPACE** (activa RAISE)
 2. Mantén presionado el **pulgar derecho** (activa SpanFish)
-3. Presiona la **vocal** correspondiente
+3. Presiona la **letra** correspondiente
 4. Para mayúsculas: agrega **Shift**
-5. Para **á** desde A: mantener presionado A (hold-tap behavior)
 
 **Ejemplos:**
-- **á**: LOWER + SpanFish + A (hold)
+- **á**: LOWER + SpanFish + Q
 - **Ñ**: RAISE + SpanFish + Shift + N
 - **ó**: LOWER + SpanFish + O
-- **F1**: LOWER + SpanFish + A (tap rápido)
+- **F1**: LOWER/RAISE + SpanFish + A
 
 **Ventajas:**
 - ✅ Sin dead keys - Los símbolos `` ` ~ ' " `` aparecen inmediatamente

@@ -40,7 +40,19 @@ draw_config:
 parse_config:
   preprocess: true
   skip_binding_parsing: false
-  raw_binding_map: {}
+  raw_binding_map:
+    '&alt_tab': Alt+Tab
+    '&alt_shift_tab': Alt+Sft+Tab
+    '&alt_f4': Alt+F4
+    '&super_d': Super+D
+    '&super_tab': Super+Tab
+    '&super_left': Tile←
+    '&super_right': Tile→
+    '&super_up': Max
+    '&super_down': Restore
+    '&super_h': Min
+    '&ws_left': WS←
+    '&ws_right': WS→
   sticky_label: sticky
   toggle_label: toggle
   tap_toggle_label: tap-toggle

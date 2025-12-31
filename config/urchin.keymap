@@ -89,6 +89,80 @@
                      , <&macro_release &kp LGUI>;
         };
 
+        // Super+Left - Tile window to left half
+        super_left: super_left {
+            compatible = "zmk,behavior-macro";
+            label = "SUPER_LEFT";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp LEFT>
+                     , <&macro_release &kp LGUI>;
+        };
+
+        // Super+Right - Tile window to right half
+        super_right: super_right {
+            compatible = "zmk,behavior-macro";
+            label = "SUPER_RIGHT";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp RIGHT>
+                     , <&macro_release &kp LGUI>;
+        };
+
+        // Super+Up - Maximize window
+        super_up: super_up {
+            compatible = "zmk,behavior-macro";
+            label = "SUPER_UP";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp UP>
+                     , <&macro_release &kp LGUI>;
+        };
+
+        // Super+Down - Restore/unmaximize window
+        super_down: super_down {
+            compatible = "zmk,behavior-macro";
+            label = "SUPER_DOWN";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp DOWN>
+                     , <&macro_release &kp LGUI>;
+        };
+
+        // Super+H - Minimize window
+        super_h: super_h {
+            compatible = "zmk,behavior-macro";
+            label = "SUPER_H";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp H>
+                     , <&macro_release &kp LGUI>;
+        };
+
+        // Ctrl+Alt+Left - Switch to workspace on left
+        ws_left: ws_left {
+            compatible = "zmk,behavior-macro";
+            label = "WS_LEFT";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL>
+                     , <&macro_press &kp LALT>
+                     , <&macro_tap &kp LEFT>
+                     , <&macro_release &kp LALT>
+                     , <&macro_release &kp LCTRL>;
+        };
+
+        // Ctrl+Alt+Right - Switch to workspace on right
+        ws_right: ws_right {
+            compatible = "zmk,behavior-macro";
+            label = "WS_RIGHT";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL>
+                     , <&macro_press &kp LALT>
+                     , <&macro_tap &kp RIGHT>
+                     , <&macro_release &kp LALT>
+                     , <&macro_release &kp LCTRL>;
+        };
+
     };
 
     behaviors {
@@ -326,26 +400,31 @@
         };
 
         // ╔═══════════════════════════════════════════════════════════╗
-        // ║         CAPA RAISE (Navegación y Funciones)               ║
+        // ║         CAPA RAISE (Window Management & Navigation)       ║
         // ╠═══════════════════════════════════════════════════════════╣
-        // ║ SUPER  F2    F3    F4    F5     F6    F7    F8    F9   PRSC ║
-        // ║ALT_F4  ALT  GUI  SHFT   F11    LEFT  DOWN   UP  RIGHT  F12 ║
-        // ║ UNDO  CUT  COPY+ PASTE+ REDO   HOME  PGDN  PGUP  END   INS  ║
-        // ║            ADJ   ___        SPANFISH  ___                  ║
+        // ║ SUPER ALT_TAB ALT_SFT_TAB SUPER_TAB SUPER_D | WS_L TILE_L MAX TILE_R WS_R ║
+        // ║ALT_F4  ALT    GUI        SHFT      MIN     | LEFT  DOWN   UP  RIGHT  PRSC ║
+        // ║ UNDO   CUT    COPY+      PASTE+    REDO    | HOME  PGDN   PGUP END   INS  ║
+        // ║                ADJ       ___             SPANFISH  ___                    ║
         // ║                                                             ║
-        // ║ Q: Super (Activities) | A: Alt+F4 (cerrar ventana)         ║
-        // ║ Ubuntu/GNOME navegación - Navegación Neovim home row       ║
-        // ║ COPY+/PASTE+: Ctrl+Shift+C/V (portapapeles sistema Neovim) ║
-        // ║ F1-F12: Accesibles vía SpanFish layer (home row)           ║
+        // ║ Window Management (Ubuntu/GNOME):                          ║
+        // ║ - Alt+Tab / Alt+Shift+Tab: Switch apps                     ║
+        // ║ - Super+Tab: Show all apps / Super+D: Show desktop         ║
+        // ║ - Tile Left/Right/Maximize: Super+Left/Right/Up            ║
+        // ║ - Minimize: Super+H / Close: Alt+F4                        ║
+        // ║ - Workspaces: Ctrl+Alt+Left/Right                          ║
+        // ║ Navigation: Vim-style arrows (H/J/K/L)                     ║
+        // ║ Copy/Paste: Ctrl+Shift+C/V (terminal compatible)           ║
+        // ║ F1-F12: Available in SpanFish layer (home row)             ║
         // ╚═══════════════════════════════════════════════════════════╝
 
         raise_layer {
             label = "RAISE";
             bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-             &kp LGUI      &kp F2        &kp F3        &kp F4        &kp F5            &kp F6        &kp F7        &kp F8        &kp F9        &kp PSCRN
+             &kp LGUI      &alt_tab      &alt_shift_tab &super_tab   &super_d          &ws_left      &super_left   &super_up     &super_right  &ws_right
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &alt_f4       &kp LALT      &kp LGUI      &kp LSHFT     &kp F11           &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp F12
+             &alt_f4       &kp LALT      &kp LGUI      &kp LSHFT     &super_h          &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp PSCRN
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp LC(Z)     &kp LC(X)     &kp LC(LS(C)) &kp LC(LS(V)) &kp LC(Y)         &kp HOME      &kp PG_DN     &kp PG_UP     &kp END       &kp INS
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
