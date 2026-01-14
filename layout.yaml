@@ -141,7 +141,7 @@ layers:
   - {t: ▽, type: trans}
   - {type: held}
   SpanFish:
-  - 'á/Á'
+  - F1
   - {t: ▽, type: trans}
   - 'é/É'
   - {t: ▽, type: trans}
@@ -150,8 +150,8 @@ layers:
   - 'ú/Ú'
   - 'í/Í'
   - 'ó/Ó'
-  - {t: ▽, type: trans}
-  - F1
+  - '&uc 0xBF'
+  - 'á/Á'
   - F2
   - F3
   - F4
@@ -167,7 +167,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - 'ñ/Ñ'
-  - {t: ▽, type: trans}
+  - '&uc 0xA1'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
