@@ -365,6 +365,58 @@
             layers = <BASE>;
         };
 
+        // ═══════════════════════════════════════════════════════════
+        // SÍMBOLOS ADICIONALES (mano derecha + C+V)
+        // ═══════════════════════════════════════════════════════════
+
+        // * - Multiplicación, spread operator, punteros
+        combo_asterisk {
+            timeout-ms = <50>;
+            key-positions = <22 23>;  // C+V
+            bindings = <&kp STAR>;
+            layers = <BASE LOWER RAISE>;
+        };
+
+        // ? - Optional chaining, nullish coalescing, ternario
+        combo_question {
+            timeout-ms = <50>;
+            key-positions = <6 7>;  // U+I
+            bindings = <&kp QMARK>;
+            layers = <BASE LOWER RAISE>;
+        };
+
+        // ! - Negación, non-null assertion
+        combo_exclaim {
+            timeout-ms = <50>;
+            key-positions = <7 8>;  // I+O
+            bindings = <&kp EXCL>;
+            layers = <BASE LOWER RAISE>;
+        };
+
+        // ; - Fin de statement (más rápido que meñique)
+        combo_semicolon {
+            timeout-ms = <50>;
+            key-positions = <15 16>;  // H+J
+            bindings = <&kp SEMI>;
+            layers = <BASE LOWER RAISE>;
+        };
+
+        // & - Referencias, AND lógico
+        combo_ampersand {
+            timeout-ms = <50>;
+            key-positions = <25 26>;  // N+M
+            bindings = <&kp AMPS>;
+            layers = <BASE LOWER RAISE>;
+        };
+
+        // \ - Backslash, escape sequences
+        combo_backslash {
+            timeout-ms = <50>;
+            key-positions = <8 9>;  // O+P
+            bindings = <&kp BSLH>;
+            layers = <BASE LOWER RAISE>;
+        };
+
     };
 
     keymap {

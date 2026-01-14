@@ -221,3 +221,21 @@ combos:
 - p: [3, 4]
   k: '`'
   l: [BASE]
+- p: [22, 23]
+  k: '*'
+  l: [BASE, LOWER, RAISE]
+- p: [6, 7]
+  k: '?'
+  l: [BASE, LOWER, RAISE]
+- p: [7, 8]
+  k: '!'
+  l: [BASE, LOWER, RAISE]
+- p: [15, 16]
+  k: ;
+  l: [BASE, LOWER, RAISE]
+- p: [25, 26]
+  k: '&'
+  l: [BASE, LOWER, RAISE]
+- p: [8, 9]
+  k: \
+  l: [BASE, LOWER, RAISE]

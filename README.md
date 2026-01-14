@@ -63,12 +63,20 @@
 - **S + D**: `-` (minus, kebab-case)
 - **X + C**: `_` (underscore, snake_case)
 
-**🎯 Símbolos de programación:**
+**🎯 Símbolos de programación (mano izquierda):**
 - **D + F**: `=` (igual)
 - **F + G**: `+` (más)
 - **E + R**: `:` (dos puntos - JSON, CSS)
 - **Q + W**: `~` (tilde - regex, paths)
 - **R + T**: `` ` `` (backtick - template literals)
+- **C + V**: `*` (multiplicación, spread operator)
+
+**💻 Símbolos de programación (mano derecha):**
+- **U + I**: `?` (optional chaining, nullish, ternario)
+- **I + O**: `!` (negación, non-null assertion)
+- **O + P**: `\` (backslash, escape sequences)
+- **H + J**: `;` (fin de statement - más rápido)
+- **N + M**: `&` (referencias, AND lógico)
 
 **✏️ Atajos de edición:**
 - **L + ;**: Ctrl+A (seleccionar todo - combo mano derecha)
