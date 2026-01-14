@@ -71,7 +71,7 @@ layers:
   - SpanFish
   - ADJUST
   RAISE:
-  - LGUI
+  - Alt+F4
   - Alt+Tab
   - Alt+Sft+Tab
   - Super+Tab
@@ -81,10 +81,10 @@ layers:
   - Max
   - Tile→
   - WS→
-  - Alt+F4
-  - LALT
-  - LGUI
+  - '&super_shift_left'
   - LSHFT
+  - LGUI
+  - '&super_shift_right'
   - Min
   - LEFT
   - DOWN
@@ -102,7 +102,7 @@ layers:
   - END
   - INS
   - ADJUST
-  - {t: ▽, type: trans}
+  - DEL
   - SpanFish
   - {type: held}
   ADJUST:
@@ -150,7 +150,7 @@ layers:
   - 'ú/Ú'
   - 'í/Í'
   - 'ó/Ó'
-  - '&uc 0xBF'
+  - {t: ▽, type: trans}
   - 'á/Á'
   - F2
   - F3
@@ -167,7 +167,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - 'ñ/Ñ'
-  - '&uc 0xA1'
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
