@@ -98,7 +98,7 @@ layers:
   - Ctl+Y
   - HOME
   - Min
-  - Max
+  - Restore
   - END
   - Ctl+A
   - ADJUST
@@ -243,7 +243,7 @@ combos:
   k: '?'
   l: [BASE, LOWER, RAISE]
 - p: [7, 8]
-  k: '!'
+  k: ^
   l: [BASE, LOWER, RAISE]
 - p: [15, 16]
   k: ;

@@ -425,11 +425,11 @@
             layers = <BASE LOWER RAISE>;
         };
 
-        // ! - Negación, non-null assertion
-        combo_exclaim {
+        // ^ - Caret, exponenciación, regex
+        combo_caret {
             timeout-ms = <50>;
             key-positions = <7 8>;  // I+O
-            bindings = <&kp EXCL>;
+            bindings = <&kp CARET>;
             layers = <BASE LOWER RAISE>;
         };
 
@@ -537,7 +537,7 @@
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &super_shift_left &kp LSHFT &kp LGUI      &super_shift_right &super_d     &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp PSCRN
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp LC(Z)     &kp LC(X)     &kp LC(LS(C)) &kp LC(LS(V)) &kp LC(Y)         &kp HOME      &super_h      &super_up     &kp END       &kp LC(A)
+             &kp LC(Z)     &kp LC(X)     &kp LC(LS(C)) &kp LC(LS(V)) &kp LC(Y)         &kp HOME      &super_h      &super_down   &kp END       &kp LC(A)
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                          &mo ADJUST    &kp DEL                         &mo SPANFISH  &trans
         //                                             ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
