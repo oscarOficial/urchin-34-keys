@@ -281,6 +281,14 @@
             layers = <BASE LOWER RAISE>;
         };
 
+        // & - Referencias, AND lógico
+        combo_ampersand {
+            timeout-ms = <50>;
+            key-positions = <26 27>;  // M+,
+            bindings = <&kp AMPS>;
+            layers = <BASE LOWER RAISE>;
+        };
+
         // > - HTML tags, comparaciones
         combo_greater_than {
             timeout-ms = <50>;
@@ -313,11 +321,11 @@
         // EDICIÓN (atajos de teclado comunes)
         // ═══════════════════════════════════════════════════════════
 
-        // Ctrl+A - Seleccionar todo (mano derecha libre)
-        combo_ctrl_a {
+        // ! - Exclamación, negación
+        combo_exclaim_right {
             timeout-ms = <50>;
             key-positions = <18 19>;  // L+;
-            bindings = <&kp LC(A)>;
+            bindings = <&kp EXCL>;
             layers = <BASE LOWER RAISE>;
         };
 
@@ -369,10 +377,42 @@
         // SÍMBOLOS ADICIONALES (mano derecha + C+V)
         // ═══════════════════════════════════════════════════════════
 
+        // % - Porcentaje, módulo
+        combo_percent {
+            timeout-ms = <50>;
+            key-positions = <5 6>;  // Y+U
+            bindings = <&kp PRCNT>;
+            layers = <BASE LOWER RAISE>;
+        };
+
+        // @ - Email, decoradores
+        combo_at {
+            timeout-ms = <50>;
+            key-positions = <22 23>;  // C+V
+            bindings = <&kp AT>;
+            layers = <BASE LOWER RAISE>;
+        };
+
+        // \ - Backslash (fila inferior derecha)
+        combo_backslash_bottom {
+            timeout-ms = <50>;
+            key-positions = <28 29>;  // .+/
+            bindings = <&kp BSLH>;
+            layers = <BASE LOWER RAISE>;
+        };
+
+        // # - Hash, comentarios, IDs
+        combo_hash {
+            timeout-ms = <50>;
+            key-positions = <23 24>;  // V+B
+            bindings = <&kp HASH>;
+            layers = <BASE LOWER RAISE>;
+        };
+
         // * - Multiplicación, spread operator, punteros
         combo_asterisk {
             timeout-ms = <50>;
-            key-positions = <22 23>;  // C+V
+            key-positions = <25 26>;  // N+M
             bindings = <&kp STAR>;
             layers = <BASE LOWER RAISE>;
         };
@@ -401,19 +441,12 @@
             layers = <BASE LOWER RAISE>;
         };
 
-        // & - Referencias, AND lógico
-        combo_ampersand {
-            timeout-ms = <50>;
-            key-positions = <25 26>;  // N+M
-            bindings = <&kp AMPS>;
-            layers = <BASE LOWER RAISE>;
-        };
 
-        // \ - Backslash, escape sequences
-        combo_backslash {
+        // $ - Variables shell/PHP
+        combo_dollar {
             timeout-ms = <50>;
             key-positions = <8 9>;  // O+P
-            bindings = <&kp BSLH>;
+            bindings = <&kp DLLR>;
             layers = <BASE LOWER RAISE>;
         };
 
@@ -478,14 +511,15 @@
         // ╔═══════════════════════════════════════════════════════════╗
         // ║         CAPA RAISE (Window Management & Navigation)       ║
         // ╠═══════════════════════════════════════════════════════════╣
-        // ║ALT_F4 ALT_TAB ALT_SFT_TAB SUPER_TAB SUPER_D | WS_L TILE_L MAX TILE_R WS_R ║
-        // ║ MON_L  SHFT   GUI        MON_R     MIN     | LEFT  DOWN   UP  RIGHT  PRSC ║
-        // ║ UNDO   CUT    COPY+      PASTE+    REDO    | HOME  PGDN   PGUP END   INS  ║
-        // ║                ADJ       DEL             SPANFISH  ___                    ║
+        // ║ALT_F4  ALT   SH_TAB  TAB  SUPER_TAB | WS_L TILE_L MAX TILE_R WS_R ║
+        // ║ MON_L  SHFT   GUI   MON_R   DESK    | LEFT  DOWN   UP  RIGHT  PRSC ║
+        // ║ UNDO   CUT    COPY+  PASTE+  REDO   | HOME  MIN    MAX  END   C-A  ║
+        // ║                ADJ    DEL           | SPANFISH  ___                ║
         // ║                                                             ║
-        // ║ Window Management (Ubuntu/GNOME):                          ║
-        // ║ - Alt+Tab / Alt+Shift+Tab: Switch apps                     ║
-        // ║ - Super+Tab: Show all apps / Super+D: Show desktop         ║
+        // ║ Window Switcher (Hold W + tap R/E):                        ║
+        // ║ - Hold W (Alt) + tap R (Tab): Siguiente ventana            ║
+        // ║ - Hold W (Alt) + tap E (Shift+Tab): Ventana anterior       ║
+        // ║ - Soltar W: Confirmar selección                            ║
         // ║ - Tile Left/Right/Maximize: Super+Left/Right/Up            ║
         // ║ - Minimize: Super+H / Close: Alt+F4 (Q)                    ║
         // ║ - Workspaces: Ctrl+Alt+Left/Right                          ║
@@ -499,11 +533,11 @@
             label = "RAISE";
             bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-             &alt_f4       &alt_tab      &alt_shift_tab &super_tab   &super_d          &ws_left      &super_left   &super_up     &super_right  &ws_right
+             &alt_f4       &kp LALT      &kp LS(TAB)   &kp TAB       &super_tab        &ws_left      &super_left   &super_up     &super_right  &ws_right
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &super_shift_left &kp LSHFT &kp LGUI      &super_shift_right &super_h     &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp PSCRN
+             &super_shift_left &kp LSHFT &kp LGUI      &super_shift_right &super_d     &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp PSCRN
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp LC(Z)     &kp LC(X)     &kp LC(LS(C)) &kp LC(LS(V)) &kp LC(Y)         &kp HOME      &kp PG_DN     &kp PG_UP     &kp END       &kp INS
+             &kp LC(Z)     &kp LC(X)     &kp LC(LS(C)) &kp LC(LS(V)) &kp LC(Y)         &kp HOME      &super_h      &super_up     &kp END       &kp LC(A)
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                          &mo ADJUST    &kp DEL                         &mo SPANFISH  &trans
         //                                             ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯

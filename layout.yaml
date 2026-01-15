@@ -72,10 +72,10 @@ layers:
   - ADJUST
   RAISE:
   - Alt+F4
-  - Alt+Tab
-  - Alt+Sft+Tab
+  - LALT
+  - Sft+TAB
+  - TAB
   - Super+Tab
-  - Super+D
   - WS←
   - Tile←
   - Max
@@ -85,7 +85,7 @@ layers:
   - LSHFT
   - LGUI
   - '&super_shift_right'
-  - Min
+  - Super+D
   - LEFT
   - DOWN
   - UP
@@ -97,10 +97,10 @@ layers:
   - Ctl+Sft+V
   - Ctl+Y
   - HOME
-  - PG DN
-  - PG UP
+  - Min
+  - Max
   - END
-  - INS
+  - Ctl+A
   - ADJUST
   - DEL
   - SpanFish
@@ -194,6 +194,9 @@ combos:
 - p: [17, 18]
   k: <
   l: [BASE, LOWER, RAISE]
+- p: [26, 27]
+  k: '&'
+  l: [BASE, LOWER, RAISE]
 - p: [27, 28]
   k: '>'
   l: [BASE, LOWER, RAISE]
@@ -204,7 +207,7 @@ combos:
   k: _
   l: [BASE, LOWER, RAISE]
 - p: [18, 19]
-  k: Ctl+A
+  k: '!'
   l: [BASE, LOWER, RAISE]
 - p: [12, 13]
   k: '='
@@ -221,7 +224,19 @@ combos:
 - p: [3, 4]
   k: '`'
   l: [BASE]
+- p: [5, 6]
+  k: '%'
+  l: [BASE, LOWER, RAISE]
 - p: [22, 23]
+  k: '@'
+  l: [BASE, LOWER, RAISE]
+- p: [28, 29]
+  k: \
+  l: [BASE, LOWER, RAISE]
+- p: [23, 24]
+  k: '#'
+  l: [BASE, LOWER, RAISE]
+- p: [25, 26]
   k: '*'
   l: [BASE, LOWER, RAISE]
 - p: [6, 7]
@@ -233,9 +248,6 @@ combos:
 - p: [15, 16]
   k: ;
   l: [BASE, LOWER, RAISE]
-- p: [25, 26]
-  k: '&'
-  l: [BASE, LOWER, RAISE]
 - p: [8, 9]
-  k: \
+  k: $
   l: [BASE, LOWER, RAISE]
